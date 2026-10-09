@@ -1,5 +1,5 @@
 "use client"
-import { signUp } from '@/lib/auth-client';
+import { signIn, signUp } from '@/lib/auth-client';
 import { redirect } from 'next/navigation';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
@@ -37,6 +37,38 @@ const SignUp = () => {
         toast.error("User already exists. Use another email");
       }
     }
+    ////////////////////////////////////////////
+    //data submit with googe method
+    const handeWithGoogle = async() =>{
+
+      try {
+        await signIn.social({
+          provider: "google",
+        });
+      } catch (error) {
+        toast.error(
+          `Google Sign In Error: ${
+            error instanceof Error ? error.message : String(error)
+          }`,
+        );
+      }
+    }
+
+     const handleSubmitGithub = async()=>{
+          try{
+            await signIn.social({
+            provider: "github"
+            });
+            toast.success("Github login successful");
+          }
+          catch(error){
+            toast.error(
+              `Google Sign In Error: ${
+                error instanceof Error ? error.message : String(error)
+              }`,
+            );
+          }
+        }
 
     return (
       <div className="mx-auto flex min-h-[70vh] w-full max-w-md flex-col items-center justify-center px-4">
@@ -46,9 +78,7 @@ const SignUp = () => {
             বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।
           </p>
         </div>
-        <form 
-        onSubmit={onSubmit}
-        className="mt-6 w-full max-w-md">
+        <form onSubmit={onSubmit} className="mt-6 w-full max-w-md">
           <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-5">
             <label className="label">নাম</label>
             <input
@@ -117,7 +147,10 @@ const SignUp = () => {
         </form>
         <div className="divider">অথবা</div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <button className="btn bg-white text-black whitespace-nowrap border-[#e5e5e5]">
+          <button
+            onClick={handeWithGoogle}
+            className="btn bg-white text-black whitespace-nowrap border-[#e5e5e5]"
+          >
             <svg
               aria-label="Google logo"
               width="16"
@@ -148,7 +181,10 @@ const SignUp = () => {
             Google দিয়ে চালিয়ে যান
           </button>
 
-          <button className="btn bg-black text-white whitespace-nowrap border-black">
+          <button
+            onClick={handleSubmitGithub}
+            className="btn bg-black text-white whitespace-nowrap border-black"
+          >
             <svg
               aria-label="GitHub logo"
               width="16"
