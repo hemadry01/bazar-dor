@@ -1,21 +1,12 @@
-"use client"
+
 import Image from 'next/image';
 import Logo from "@/assets/logo-icon.png"
 import UserInfo from './UserInfo';
-import { useEffect, useState } from 'react';
+import Navbar from './Navbar';
+import HeaderDate from './HeaderData';
 
 
 const HeaderPage = () => {
-
-  const [date, setDate] = useState("");
-
-  useEffect(() => {
-    const today = new Date().toLocaleDateString("bn-BD", {
-      dateStyle: "full",
-    });
-
-    setDate(today);
-  }, []);
   
     return (
       <div className="relative justify-center mt-4">
@@ -26,13 +17,14 @@ const HeaderPage = () => {
                 <Image src={Logo} alt="Logo" className="bg-green-600" />
               </div>
             </div>
-            <div className='items-center justify-center mx-auto'>
-              <h2 className='text-2xl font-semibold'>বাজার দর</h2>
-              <p className="text-gray-400">{date}</p>
+            <div className="items-center justify-center mx-auto">
+              <h2 className="text-2xl font-semibold">বাজার দর</h2>
+              <HeaderDate/>
             </div>
           </div>
-          <UserInfo/>
+            <UserInfo/>
         </div>
+        <Navbar />
       </div>
     );
 };
