@@ -44,14 +44,15 @@ const TodayPriceRising = async () => {
         </div>
 
         <span className="shrink-0 rounded-full border border-red-100 bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-600 dark:border-red-900 dark:bg-red-950 dark:text-red-400">
-          Price Rising
+          দাম বেড়েছে
         </span>
       </div>
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {productData
-          .filter((product) => product.change?.dir === "up").slice(0,6)
+          .filter((product) => product.change?.dir === "up")
+          .slice(0, 6)
           .map((product) => (
             <RisingProduct key={product.id} product={product} />
           ))}
