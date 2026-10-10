@@ -5,7 +5,7 @@ interface IProductPromise {
   product:IProduct;
 }
 
-const ProductCard = ({product}:IProductPromise) => {
+const MarqueeCard = ({product}:IProductPromise) => {
    //console.log(product);
     console.log("Direction:", product.change?.dir);
     //console.log("UpArrow:", UpArrow);
@@ -40,4 +40,4 @@ const ProductCard = ({product}:IProductPromise) => {
     );
 };
 
-export default ProductCard;
+export default MarqueeCard;

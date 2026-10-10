@@ -1,9 +1,10 @@
+import HeroSectionPage from "@/components/HeroSection";
 
 
 export default function Home() {
   return (
-    <div>
-      
+    <div className="bg-[#F0F5F0]">
+      <HeroSectionPage />
     </div>
   );
 }

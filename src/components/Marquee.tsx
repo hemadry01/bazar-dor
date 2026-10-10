@@ -1,5 +1,5 @@
 import { IProduct } from '@/type/Product';
-import ProductCard from './ProductCard';
+import MarqueeCard from './MarqueeCard';
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
 
@@ -27,7 +27,7 @@ const MarqueePage = async() => {
       <div className="flex gap-3 ">
         <MarqueeText direction="right" duration={10} py-1>
           {productData.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <MarqueeCard key={product.id} product={product} />
           ))}
         </MarqueeText>
       </div>

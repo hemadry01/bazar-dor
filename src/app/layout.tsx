@@ -23,7 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <HeaderPage />
         <MarqueePage/>
-        <main className="max-w-6xl mx-auto">{children}</main>
+        <main>{children}</main>
         <ToastContainer />
       </body>
     </html>
