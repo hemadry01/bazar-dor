@@ -7,7 +7,7 @@ interface IProductPromise {
 
 const MarqueeCard = ({product}:IProductPromise) => {
    //console.log(product);
-    console.log("Direction:", product.change?.dir);
+    //console.log("Direction:", product.change?.dir);
     //console.log("UpArrow:", UpArrow);
     return (
       <div className="flex items-center gap-3 whitespace-nowrap  py-2">

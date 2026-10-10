@@ -7,17 +7,17 @@ const MarqueePage = async() => {
     let productData:IProduct[]=[]
     try{
         const res = await fetch(
-          "https://api.api-store.workers.dev/api/bazardor/products",
+          "https://openapi.programming-hero.com/api/bazardor/products",
           {
             next: { revalidate: 3600 },
           },
         );
         if(!res.ok){
-            console.log("API Status:", res.status);
+            //console.log("API Status:", res.status);
             throw new Error("Failed to fetch categories");
         }
         productData = await res.json();
-        console.log(productData);
+        //console.log(productData);
        
     }
     catch(error){
