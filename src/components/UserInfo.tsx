@@ -13,11 +13,6 @@ const UserInfo = () => {
   }
 
   const user = session?.user
-  const handleSignOut = async() =>{
-    await signOut();
-  }
-
-
     return (
       <div>
         {user ? (
@@ -25,9 +20,6 @@ const UserInfo = () => {
             <Link href={"/profile"}>
             <h2>{user?.name}</h2>
             </Link>
-            {/* <button onClick={handleSignOut} className="btn btn-error btn-xs">
-              SignOut
-            </button> */}
           </div>
         ) : (
           <div className="flex gap-2 items-baseline">

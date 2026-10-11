@@ -4,6 +4,7 @@ import "./globals.css";
 import HeaderPage from "@/components/Header";
 import { ToastContainer } from "react-toastify";
 import MarqueePage from "@/components/Marquee";
+import FooterPage from "@/components/Footer";
 
 const notoSerifBangli = Noto_Serif_Bengali({
   subsets: ["latin","bengali"],
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <MarqueePage />
         <main className="bg-[#F0F5F0]">{children}</main>
         <ToastContainer />
+        <FooterPage/>
       </body>
     </html>
   );
