@@ -1,6 +1,7 @@
 import { IProduct } from '@/type/Product';
 import React from 'react';
 import DroppedPrice from './DroppedPrice';
+import Link from 'next/link';
 
 const TodayPriceDropped = async() => {
 
@@ -49,12 +50,15 @@ const TodayPriceDropped = async() => {
         </div>
 
         {/* Product Grid */}
+
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {productData
             .filter((product) => product.change?.dir === "down")
             .slice(0, 6)
             .map((product) => (
-              <DroppedPrice key={product.id} product={product} />
+              <Link key={product.id} href={`/products/${product.id}`}>
+                <DroppedPrice product={product} />
+              </Link>
             ))}
         </div>
       </section>

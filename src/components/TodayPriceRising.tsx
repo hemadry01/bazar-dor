@@ -1,6 +1,7 @@
 import { IProduct } from "@/type/Product";
 import React from "react";
 import RisingProduct from "./RisingProduct";
+import Link from "next/link";
 
 const TodayPriceRising = async () => {
   let productData: IProduct[] = [];
@@ -53,7 +54,10 @@ const TodayPriceRising = async () => {
           .filter((product) => product.change?.dir === "up")
           .slice(0, 6)
           .map((product) => (
-            <RisingProduct key={product.id} product={product} />
+            <Link key={product.id} href={`/products/${product.id}`}>
+
+              <RisingProduct key={product.id} product={product} />
+            </Link>
           ))}
       </div>
     </section>
