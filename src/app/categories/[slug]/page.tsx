@@ -42,8 +42,8 @@ const CategoriesPage = async ({ params }: ICategoryProps) => {
           className="select w-32 px-2 py-1 text-sm items-center"
         >
           <option disabled={true}>Short by</option>
-          <option value={"today"}>ডিফল্ট</option>
-          <option value={"today"}>বেশি থেকে কম</option>
+          <option value={"default"}>ডিফল্ট</option>
+          <option value={"high"}>বেশি থেকে কম</option>
           <option value={"today"}>কম থেকে বেশি</option>
         </select>
       </div>
