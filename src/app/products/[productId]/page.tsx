@@ -1,3 +1,4 @@
+import NotFound from '@/app/not-found';
 import SingleProduct from '@/components/SingleProduct';
 import { IProduct } from '@/type/Product';
 import React from 'react';
@@ -19,6 +20,9 @@ const SingleProductpage = async({params}:IProductProps) => {
     );
 
     const product:IProduct=await res.json();
+    if(!product){
+      NotFound();
+    }
 
     console.log("singleProduct", product);
 

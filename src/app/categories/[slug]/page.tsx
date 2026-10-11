@@ -1,3 +1,4 @@
+import NotFound from '@/app/not-found';
 import CategoriesCard from '@/components/CategoriesCard';
 import { IProduct } from '@/type/Product';
 import React from 'react';
@@ -21,6 +22,9 @@ const CategoriesPage = async ({ params }: ICategoryProps) => {
     );
     const productData:IProduct[] =await res.json();
     console.log("chal",productData);
+    if(!productData){
+      NotFound();
+    }
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-8 ">

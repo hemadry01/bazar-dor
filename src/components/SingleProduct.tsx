@@ -8,10 +8,15 @@ interface IProductpromise {
 const SingleProduct = ({ product }: IProductpromise) => {
   console.log("product devision", product.markets);
   
-  const price = Math.abs(Number(product.today - product.yesterday));
-  const minPrice = Math.min(...product.markets.map((item) => item.min));
-  const maxPrice = Math.max(...product.markets.map((item) => item.max));
+  //const price = Math.abs(Number(product.today - product.yesterday));
+  // const minPrice = Math.min(...product.markets.map((item) => item.min));
+  // const maxPrice = Math.max(...product.markets.map((item) => item.max));
+  const markets = product.markets ?? [];
+  const minPrice = markets.length ? Math.min(...markets.map((item) => item.min)) : 0;
+  const maxPrice = markets.length ? Math.max(...markets.map((item) => item.max)): 0;
+  const price = Math.abs(Number(product.today) - Number(product.yesterday));
   const avgPrice =product.markets.reduce((sum, item) => sum + (Number(item.min) + Number(item.max)) / 2,0) / product.markets.length;
+  
   return (
     <div className="justify-center items-center">
       <div className="w-full rounded-2xl bg-white px-6 py-5 mb-4  shadow-md flex">

@@ -2,6 +2,7 @@
 import { signOut, updateUser, useSession } from "@/lib/auth-client";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
   const { data: session, isPending } = useSession();
@@ -17,6 +18,7 @@ const ProfilePage = () => {
 
          const data= await signOut();
           if(data){
+             toast.success("Profile Update successful");
             redirect("/");
           }
       }
