@@ -1,10 +1,11 @@
 "use client"
 import { signOut, updateUser, useSession } from "@/lib/auth-client";
 import Image from "next/image";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 const ProfilePage = () => {
+  const router = useRouter();
   const { data: session, isPending } = useSession();
   //const [show, setShow] = useState(false);
 
@@ -16,11 +17,13 @@ const ProfilePage = () => {
 
    const handleSignOut =async()=>{
 
-         const data= await signOut();
-          if(data){
-             toast.success("Profile Update successful");
-            redirect("/");
-          }
+         try {
+           await signOut();
+           router.replace("/");
+           router.refresh();
+         } catch (error) {
+           console.error("Sign out failed:", error);
+         }
       }
 
        const handleUpdateProfile = async (
@@ -37,6 +40,8 @@ const ProfilePage = () => {
 
          });
          if(resend){
+          
+             toast.success("Profile Update successful");
             redirect("/");
          }
        };

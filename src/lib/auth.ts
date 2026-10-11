@@ -5,6 +5,10 @@ import { mongodbAdapter } from "@better-auth/mongo-adapter";
 const client = new MongoClient(process.env.BETTER_AUTH_DB_URL as string);
 const db = client.db("bazar-dor");
 
+client.on("error", (error) => {
+  console.error("[MongoDB connection error]", error);
+});
+
 export const auth = betterAuth({
 
     emailAndPassword: { 
@@ -22,6 +26,12 @@ export const auth = betterAuth({
             clientSecret: process.env.BETTER_AUTH_GITHUB_CLIENT_SECRET as string, 
         },
     },
+    account: {
+    accountLinking: {
+    enabled: true,
+    trustedProviders: ["google", "github"],
+  },
+},
 
   database: mongodbAdapter(db, {
     client,
