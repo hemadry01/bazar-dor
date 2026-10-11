@@ -22,8 +22,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <HeaderPage />
-        <MarqueePage/>
-        <main>{children}</main>
+        <MarqueePage />
+        <main className="bg-[#F0F5F0]">{children}</main>
         <ToastContainer />
       </body>
     </html>

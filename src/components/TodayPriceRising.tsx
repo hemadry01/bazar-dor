@@ -18,7 +18,6 @@ const TodayPriceRising = async () => {
     }
 
     productData = await res.json();
-    console.log("Product", productData);
   } catch (error) {
     console.log("Error fetching Product:", error);
   }

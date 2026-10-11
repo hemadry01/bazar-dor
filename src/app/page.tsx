@@ -4,7 +4,7 @@ import ProductPage from "@/components/Product";
 
 export default function Home() {
   return (
-    <div className="bg-[#F0F5F0]">
+    <div>
       <HeroSectionPage />
       <ProductPage/>
     </div>
