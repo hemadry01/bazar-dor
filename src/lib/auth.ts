@@ -11,6 +11,16 @@ client.on("error", (error) => {
 
 export const auth = betterAuth({
 
+   baseURL:
+    process.env.BETTER_AUTH_URL ??
+    "https://bazar-dor-psi-beige.vercel.app",
+
+    trustedOrigins: [
+    "https://bazar-dor-psi-beige.vercel.app",
+  ],
+
+  secret: process.env.BETTER_AUTH_SECRET,
+  
     emailAndPassword: { 
     enabled: true, 
   },

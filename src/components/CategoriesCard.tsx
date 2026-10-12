@@ -2,12 +2,11 @@ import { IProduct } from '@/type/Product';
 import Link from 'next/link';
 import React from 'react';
 
-interface ICategoryPromise{
-    product:IProduct
+interface ICategoryPromise {
+  product: IProduct;
 }
 
-const CategoriesCard = ({ product }:ICategoryPromise) => {
-
+const CategoriesCard = ({ product }: ICategoryPromise) => {
   return (
     <div className="group rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-red-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-900">
       <Link href={`/products/${product.id}`}>

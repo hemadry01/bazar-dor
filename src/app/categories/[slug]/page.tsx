@@ -1,5 +1,6 @@
 import NotFound from '@/app/not-found';
 import CategoriesCard from '@/components/CategoriesCard';
+import ProductSotr from '@/components/ProductSotr';
 import { IProduct } from '@/type/Product';
 import React from 'react';
 
@@ -20,7 +21,7 @@ const CategoriesPage = async ({ params }: ICategoryProps) => {
         next: { revalidate: 3600 },
       },
     );
-    const productData:IProduct[] =await res.json();
+    const productData: IProduct[] = await res.json();
     console.log("chal",productData);
     if(!productData){
       NotFound();
@@ -36,25 +37,10 @@ const CategoriesPage = async ({ params }: ICategoryProps) => {
           পরিবর্তন
         </p>
       </div>
-      <div className="mx-auto mb-4 mt-4 flex w-full items-center justify-end rounded-2xl bg-white px-6 py-5 shadow-md">
-        <select
-          defaultValue="Pick a color"
-          className="select w-32 px-2 py-1 text-sm items-center"
-        >
-          <option disabled={true}>Short by</option>
-          <option value={"default"}>ডিফল্ট</option>
-          <option value={"high"}>বেশি থেকে কম</option>
-          <option value={"today"}>কম থেকে বেশি</option>
-        </select>
-      </div>
       <p className="mt-2 text-sm">
         মোট {productData.length.toLocaleString("bn-BD")} টি পণ্যের দেখানো হচ্ছে
       </p>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {productData.map((product) => (
-          <CategoriesCard key={product.id} product={product} />
-        ))}
-      </div>
+      <ProductSotr products={productData} />
     </main>
   );
 };

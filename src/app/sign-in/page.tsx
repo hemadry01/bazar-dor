@@ -34,6 +34,8 @@ const SignIn = () => {
         try {
           await signIn.social({
             provider: "google",
+            callbackURL: "/",
+            errorCallbackURL: "/sign-in",
           });
            toast.success("Google login successful");
         } catch (error) {
