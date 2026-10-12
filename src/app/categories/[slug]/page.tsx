@@ -1,5 +1,4 @@
 import NotFound from '@/app/not-found';
-import CategoriesCard from '@/components/CategoriesCard';
 import ProductSotr from '@/components/ProductSotr';
 import { IProduct } from '@/type/Product';
 import React from 'react';
